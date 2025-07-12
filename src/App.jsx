@@ -9,34 +9,9 @@ import './App.css'
 // Import images
 import heroBackground from './assets/hero-bg.jpg'
 import polinaHeadshot from './assets/polina-headshot.jpg'
-import portfolio1 from './assets/portfolio-1.jpg'
-import portfolio2 from './assets/portfolio-2.jpg'
-import portfolio3 from './assets/portfolio-3.jpg'
 
-// Portfolio data with multiple images per project
-const portfolioData = [
-  {
-    id: 1,
-    title: "Элегантная модная коллекция",
-    description: "Студийная фотосъемка для люксового модного бренда с элегантной вечерней одеждой и профессиональным стайлингом.",
-    coverImage: portfolio1,
-    images: [portfolio1, portfolio2, portfolio3]
-  },
-  {
-    id: 2,
-    title: "Стайлинг и предметная съемка",
-    description: "Чистая, минималистичная предметная фотосъемка одежды с профессиональным стайлингом и освещением.",
-    coverImage: portfolio2,
-    images: [portfolio2, portfolio1, portfolio3]
-  },
-  {
-    id: 3,
-    title: "За кадром",
-    description: "Профессиональная студийная обстановка и процесс производства контента для модных брендов и фотосъемки.",
-    coverImage: portfolio3,
-    images: [portfolio3, portfolio1, portfolio2]
-  }
-]
+// Импортируем конфигурацию портфолио из отдельного файла
+import { portfolioData } from './data/portfolioConfig.js'
 
 // Gallery Modal Component
 function GalleryModal({ isOpen, onClose, project, currentImageIndex, setCurrentImageIndex }) {
