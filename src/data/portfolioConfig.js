@@ -1,10 +1,7 @@
-// Функция для загрузки изображений из конкретной папки
-const loadProjectImages = (projectFolder) => {
-  const images = import.meta.glob(`../assets/projects/${projectFolder}/*.{jpg,jpeg,png,webp}`, { eager: true })
-  return Object.keys(images)
-    .sort()
-    .map(path => images[path].default)
-}
+// Статические импорты для каждой папки проекта
+const fashionCollectionImages = import.meta.glob('../assets/projects/fashion-collection/*.{jpg,jpeg,png,webp}', { eager: true })
+const productStylingImages = import.meta.glob('../assets/projects/product-styling/*.{jpg,jpeg,png,webp}', { eager: true })
+const behindScenesImages = import.meta.glob('../assets/projects/behind-scenes/*.{jpg,jpeg,png,webp}', { eager: true })
 
 // Основные изображения портфолио (для обратной совместимости)
 const portfolioImages = import.meta.glob('../assets/portfolio-*.jpg', { eager: true })
@@ -18,10 +15,18 @@ const additionalImageList = Object.keys(additionalImages)
   .sort()
   .map(path => additionalImages[path].default)
 
-// Изображения для каждого проекта
-const fashionCollectionImages = loadProjectImages('fashion-collection')
-const productStylingImages = loadProjectImages('product-styling')
-const behindScenesImages = loadProjectImages('behind-scenes')
+// Преобразуем импорты в массивы изображений
+const fashionCollectionImageList = Object.keys(fashionCollectionImages)
+  .sort()
+  .map(path => fashionCollectionImages[path].default)
+
+const productStylingImageList = Object.keys(productStylingImages)
+  .sort()
+  .map(path => productStylingImages[path].default)
+
+const behindScenesImageList = Object.keys(behindScenesImages)
+  .sort()
+  .map(path => behindScenesImages[path].default)
 
 // Fallback: если в папке проекта нет изображений, используем основные
 const getProjectImages = (projectImages, fallbackImages) => {
@@ -35,46 +40,41 @@ export const portfolioData = [
     title: "Элегантная модная коллекция",
     description: "Студийная фотосъемка для люксового модного бренда с элегантной вечерней одеждой и профессиональным стайлингом.",
     folder: "fashion-collection",
-    coverImage: getProjectImages(fashionCollectionImages, portfolioImageList)[0] || portfolioImageList[0],
-    images: getProjectImages(fashionCollectionImages, portfolioImageList)
+    coverImage: getProjectImages(fashionCollectionImageList, portfolioImageList)[0] || portfolioImageList[0],
+    images: getProjectImages(fashionCollectionImageList, portfolioImageList)
   },
   {
     id: 2,
     title: "Стайлинг и предметная съемка",
     description: "Чистая, минималистичная предметная фотосъемка одежды с профессиональным стайлингом и освещением.",
     folder: "product-styling",
-    coverImage: getProjectImages(productStylingImages, portfolioImageList)[0] || portfolioImageList[1],
-    images: getProjectImages(productStylingImages, portfolioImageList)
+    coverImage: getProjectImages(productStylingImageList, portfolioImageList)[0] || portfolioImageList[1],
+    images: getProjectImages(productStylingImageList, portfolioImageList)
   },
   {
     id: 3,
     title: "За кадром",
     description: "Профессиональная студийная обстановка и процесс производства контента для модных брендов и фотосъемки.",
     folder: "behind-scenes",
-    coverImage: getProjectImages(behindScenesImages, [...portfolioImageList, ...additionalImageList])[0] || portfolioImageList[2],
-    images: getProjectImages(behindScenesImages, [...portfolioImageList, ...additionalImageList])
+    coverImage: getProjectImages(behindScenesImageList, [...portfolioImageList, ...additionalImageList])[0] || portfolioImageList[2],
+    images: getProjectImages(behindScenesImageList, [...portfolioImageList, ...additionalImageList])
   }
 ]
 
-// Экспортируем функцию для добавления новых проектов
-export const createProject = (id, title, description, folder) => {
-  const projectImages = loadProjectImages(folder)
-  return {
-    id,
-    title,
-    description,
-    folder,
-    coverImage: projectImages[0] || portfolioImageList[0],
-    images: getProjectImages(projectImages, portfolioImageList)
-  }
-}
+// Для добавления нового проекта нужно:
+// 1. Создать папку в src/assets/projects/новая-папка/
+// 2. Добавить статический импорт выше
+// 3. Добавить проект в массив portfolioData
+// 
+// Пример для нового проекта:
+// const newProjectImages = import.meta.glob('../assets/projects/новая-папка/*.{jpg,jpeg,png,webp}', { eager: true })
+// const newProjectImageList = Object.keys(newProjectImages).sort().map(path => newProjectImages[path].default)
 
-// Экспортируем также отдельные массивы для гибкости
+// Экспортируем массивы для использования в других компонентах
 export { 
   portfolioImageList, 
   additionalImageList, 
-  fashionCollectionImages,
-  productStylingImages,
-  behindScenesImages,
-  loadProjectImages
+  fashionCollectionImageList,
+  productStylingImageList,
+  behindScenesImageList
 } 
