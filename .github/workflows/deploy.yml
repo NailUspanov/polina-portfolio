@@ -6,6 +6,17 @@ on:
   pull_request:
     branches: [ main, master ]
 
+# Добавляем необходимые разрешения для GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Разрешаем только один одновременный деплой
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
