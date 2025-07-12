@@ -11,5 +11,5 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: '/polina-portfolio/',
+  base: '/', // Изменено с '/polina-portfolio/' на '/' для кастомного домена
 })
