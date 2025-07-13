@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent } from '@/components/ui/card.jsx'
 import { Input } from '@/components/ui/input.jsx'
 import { Textarea } from '@/components/ui/textarea.jsx'
-import { Camera, Mail, MapPin, Instagram, Star, ArrowRight, Check, MessageCircle, FileText, X, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Camera, Mail, MapPin, Instagram, Star, ArrowRight, Check, MessageCircle, FileText, X, ChevronLeft, ChevronRight, Plus } from 'lucide-react'
 import './App.css'
 
 // Import images
@@ -302,111 +302,72 @@ function App() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Basic Package */}
-            <Card className="relative border-2 border-gray-200 hover:border-gray-300 transition-colors">
-              <CardContent className="p-8">
-                <div className="text-center">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Базовый</h3>
-                  <div className="text-4xl font-bold text-gray-900 mb-4">₽15,000</div>
-                  <p className="text-gray-600 mb-6">Идеально для небольших коллекций</p>
+          <div className="max-w-4xl mx-auto">
+            <Card className="border-2 border-gray-200 hover:border-gray-300 transition-colors">
+              <CardContent className="p-8 lg:p-12">
+                <div className="text-center mb-8">
+                  <div className="text-5xl font-bold text-gray-900 mb-4">от ₽4,000</div>
+                  <p className="text-xl text-gray-600">
+                    за час съемки
+                  </p>
                 </div>
-                <ul className="space-y-3 mb-8">
-                  <li className="flex items-center">
-                    <Check className="h-5 w-5 text-green-500 mr-3" />
-                    <span>До 10 фотографий товаров</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-5 w-5 text-green-500 mr-3" />
-                    <span>2-часовая студийная сессия</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-5 w-5 text-green-500 mr-3" />
-                    <span>Базовая ретушь</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-5 w-5 text-green-500 mr-3" />
-                    <span>Файлы высокого разрешения</span>
-                  </li>
-                </ul>
-                <Button className="w-full">Выбрать базовый</Button>
-              </CardContent>
-            </Card>
 
-            {/* Standard Package */}
-            <Card className="relative border-2 border-blue-500 hover:border-blue-600 transition-colors">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <div className="bg-blue-500 text-white px-4 py-1 rounded-full text-sm font-medium">
-                  Самый популярный
-                </div>
-              </div>
-              <CardContent className="p-8">
-                <div className="text-center">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Стандартный</h3>
-                  <div className="text-4xl font-bold text-gray-900 mb-4">₽25,000</div>
-                  <p className="text-gray-600 mb-6">Идеально для брендовых кампаний</p>
-                </div>
-                <ul className="space-y-3 mb-8">
-                  <li className="flex items-center">
-                    <Check className="h-5 w-5 text-green-500 mr-3" />
-                    <span>До 25 фотографий</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-5 w-5 text-green-500 mr-3" />
-                    <span>4-часовая студийная сессия</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-5 w-5 text-green-500 mr-3" />
-                    <span>Профессиональная ретушь</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-5 w-5 text-green-500 mr-3" />
-                    <span>Координация с моделями</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-5 w-5 text-green-500 mr-3" />
-                    <span>Консультация по стайлингу</span>
-                  </li>
-                </ul>
-                <Button className="w-full bg-blue-500 hover:bg-blue-600">Выбрать стандартный</Button>
-              </CardContent>
-            </Card>
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
+                      <Check className="h-6 w-6 text-green-500 mr-3" />
+                      В стоимость включено:
+                    </h3>
+                    <ul className="space-y-3">
+                      <li className="flex items-center">
+                        <Check className="h-5 w-5 text-green-500 mr-3" />
+                        <span>Подбор локаций</span>
+                      </li>
+                      <li className="flex items-center">
+                        <Check className="h-5 w-5 text-green-500 mr-3" />
+                        <span>Подбор образов</span>
+                      </li>
+                      <li className="flex items-center">
+                        <Check className="h-5 w-5 text-green-500 mr-3" />
+                        <span>Подбор референсов</span>
+                      </li>
+                      <li className="flex items-center">
+                        <Check className="h-5 w-5 text-green-500 mr-3" />
+                        <span>Ретушь и обработка</span>
+                      </li>
+                      <li className="flex items-center">
+                        <Check className="h-5 w-5 text-green-500 mr-3" />
+                        <span>Консультация</span>
+                      </li>
+                    </ul>
+                  </div>
 
-            {/* Premium Package */}
-            <Card className="relative border-2 border-gray-200 hover:border-gray-300 transition-colors">
-              <CardContent className="p-8">
-                <div className="text-center">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Премиум</h3>
-                  <div className="text-4xl font-bold text-gray-900 mb-4">₽45,000</div>
-                  <p className="text-gray-600 mb-6">Полное производство для бренда</p>
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
+                      <Camera className="h-6 w-6 text-blue-500 mr-3" />
+                      Дополнительно по желанию (обговаривается отдельно):
+                    </h3>
+                    <ul className="space-y-3">
+                      <li className="flex items-center">
+                        <Plus className="h-5 w-5 text-blue-500 mr-3" />
+                        <span>Услуги визажиста</span>
+                      </li>
+                      <li className="flex items-center">
+                        <Plus className="h-5 w-5 text-blue-500 mr-3" />
+                        <span>Аренда студий и помещений</span>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-                <ul className="space-y-3 mb-8">
-                  <li className="flex items-center">
-                    <Check className="h-5 w-5 text-green-500 mr-3" />
-                    <span>До 50 фотографий</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-5 w-5 text-green-500 mr-3" />
-                    <span>Полный день съемки</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-5 w-5 text-green-500 mr-3" />
-                    <span>Продвинутая ретушь</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-5 w-5 text-green-500 mr-3" />
-                    <span>Несколько моделей</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-5 w-5 text-green-500 mr-3" />
-                    <span>Креативное направление</span>
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="h-5 w-5 text-green-500 mr-3" />
-                    <span>Контент для соцсетей</span>
-                  </li>
-                </ul>
-                <Button className="w-full">Выбрать премиум</Button>
+
+                <div className="mt-8 text-center">
+                  <p className="text-gray-600 mb-6">
+                    Окончательная стоимость зависит от сложности проекта и продолжительности съемки
+                  </p>
+                  <Button className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 text-lg">
+                    Обсудить проект
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </div>
